@@ -1,0 +1,21 @@
+{
+  "name": "tomalec-ace-editor",
+  "version": "0.0.0",
+  "description": "Custom Element with Ace(http://ace.c9.io/) code editor",
+  "license": "MIT",
+  "main": "src/tomalec-ace-editor.html",
+  "keywords": [
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "platform": "Polymer/platform#~0.3.1"
+  },
+  "devDependencies": {
+    "x-html": "Juicy/juicy-html#master"
+  }
+}
