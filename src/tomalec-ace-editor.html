@@ -46,17 +46,33 @@
         // shadowRoot.appendChild(container);
         // Workaround as CSS styles are added to main document, and does not cross Shadow DOM boundry
             container.innerHTML = this.innerHTML;
-            this.innerHTML = "";
+            //this.innerHTML = "";
             this.appendChild(container);
 
         var editor = ace.edit(container);
         // initial attributes
             editor.setTheme( this.getAttribute("theme") );
-            editor.getSession().setMode( this.getAttribute("mode") );
             editor.setFontSize( this.getAttribute("fontsize") );
+            editor.setReadOnly( this.getAttribute("readonly") );
+            var session = editor.getSession();
+            session.setMode( this.getAttribute("mode") );
+            session.setUseSoftTabs( this.getAttribute("softtabs") );
 
 
         this.editor = editor;
+
+        // Observe input textNode changes
+        // Could be buggy as editor was also added to Light DOM;
+            var text = this.childNodes[0];
+            var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                console.log("observation", mutation.type, arguments, mutations, editor, text);
+                if(mutation.type == "characterData"){
+                    editor.setValue(text.data);
+                }
+              });
+            });
+            observer.observe(text, { characterData: true });
     };
 
     // Fires when an instance was removed from the document
@@ -69,10 +85,16 @@
                 this.editor.setTheme( newVal );
                 break;
             case "mode":
-                this.editor.getSession().setTheme && this.editor.getSession().setTheme( newVal );
+                this.editor.getSession().setMode( newVal );
                 break;
             case "fontsize":
                 this.editor.setFontSize( newVal );
+                break;
+            case "softtabs":
+                this.editor.getSession().setUseSoftTabs( newVal );
+                break;
+            case "readonly":
+                this.editor.setReadOnly( newVal );
                 break;
 
         }

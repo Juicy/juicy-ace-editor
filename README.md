@@ -8,12 +8,26 @@
 
 [Check it live!](http://tomalec.github.io/tomalec-ace-editor)
 
+[Play & Configure with kitchen sink](http://tomalec.github.io/tomalec-ace-editor/kitchen-sink.html)
+
+## Features
+
+Besides Ace features, `<tomalec-ace-editor>` does:
+
+ - provide extremely clean and easy way to embed it (see [Usage](#usage))
+ - observe DOM changes:
+  - Update your code by just updating Element's text content
+  - Change Editor's setting by changing DOM [attributes](#attributes)
+
+You can still fiddle with Ace editor programmatically using `<tomalec-ace-editor>.editor`.
+
+
 ## Install
 
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install tomalec-ace-editor --save
+$ bower install tomalec/tomalec-ace-editor --save
 ```
 
 Or [download as ZIP](https://github.com/tomalec/tomalec-ace-editor/archive/master.zip).
@@ -35,16 +49,18 @@ Or [download as ZIP](https://github.com/tomalec/tomalec-ace-editor/archive/maste
 3. Start using it!
 
     ```html
-    <tomalec-ace-editor></tomalec-ace-editor>
+    <tomalec-ace-editor>Editable code here</tomalec-ace-editor>
     ```
 
-## Options
+## Attributes
 
 Attribute     | Options     | Default      | Description
 ---           | ---         | ---          | ---
-`theme`        | *string*    | ``        | See [Ace API](http://ace.c9.io/#nav=api)
-`mode`         | *string*    | ``        | See [Ace API](http://ace.c9.io/#nav=api)
-`fontsize`     | *string*    | ``        | See [Ace API](http://ace.c9.io/#nav=api)
+`theme`        | *String*    | ``        | `Editor#setTheme` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`mode`         | *String*    | ``        | `EditSession#setMode` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`fontsize`     | *String*    | ``        | `Editor#setFontSize` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`softtabs`    | *Boolean* | `` | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`readonly`    | *Boolean* | `` | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
 
 ## Properties
 

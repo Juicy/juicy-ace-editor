@@ -14,8 +14,9 @@
 <body>
 <template bind>
 <div id="optionsPanel" style="position:absolute;height:100%;width:260px">
-  <a href="http://c9.io" title="Cloud9 IDE | Your code anywhere, anytime">
-    <img id="c9-logo" src="http://ace.c9.io/build/kitchen-sink/logo.png" style="width: 172px;margin: -9px 30px -12px 51px;">
+  <a href="http://tomalec.github.io/tomalec-ace-editor/">
+    <img id="c9-logo" src="http://ace.c9.io/doc/site/images/ace-logo.png" style="width: 134px;margin: 8px 0 0 63px;" alt="Ace Editor">
+    <img src="http://webcomponents.org/img/icon-customelements.png" alt="Custom Element" style="position: relative; left: -29px; bottom: -6px;">
   </a>
   <div style="position: absolute; overflow: hidden; top:100px; bottom:0">
   <div style="width: 120%; height:100%; overflow-y: scroll">
@@ -29,15 +30,14 @@
         </select>
       </td>
     </tr>
-    <tr>
+    <tr>-->
       <td >
         <label for="mode">Mode</label>
-      </td><td>
-        <select id="mode" size="1">
-        </select>
+      </td><td><select id="mode" size="1" value="{{mode}}">
+        <option value="ace/mode/abap">ABAP</option><option value="ace/mode/actionscript">ActionScript</option><option value="ace/mode/ada">ADA</option><option value="ace/mode/apache_conf">Apache Conf</option><option value="ace/mode/asciidoc">AsciiDoc</option><option value="ace/mode/assembly_x86">Assembly x86</option><option value="ace/mode/autohotkey">AutoHotKey</option><option value="ace/mode/batchfile">BatchFile</option><option value="ace/mode/c9search">C9Search</option><option value="ace/mode/c_cpp">C/C++</option><option value="ace/mode/cirru">Cirru</option><option value="ace/mode/clojure">Clojure</option><option value="ace/mode/cobol">Cobol</option><option value="ace/mode/coffee">CoffeeScript</option><option value="ace/mode/coldfusion">ColdFusion</option><option value="ace/mode/csharp">C#</option><option value="ace/mode/css">CSS</option><option value="ace/mode/curly">Curly</option><option value="ace/mode/d">D</option><option value="ace/mode/dart">Dart</option><option value="ace/mode/diff">Diff</option><option value="ace/mode/dot">Dot</option><option value="ace/mode/erlang">Erlang</option><option value="ace/mode/ejs">EJS</option><option value="ace/mode/forth">Forth</option><option value="ace/mode/ftl">FreeMarker</option><option value="ace/mode/gherkin">Gherkin</option><option value="ace/mode/glsl">Glsl</option><option value="ace/mode/golang">Go</option><option value="ace/mode/groovy">Groovy</option><option value="ace/mode/haml">HAML</option><option value="ace/mode/handlebars">Handlebars</option><option value="ace/mode/haskell">Haskell</option><option value="ace/mode/haxe">haXe</option><option value="ace/mode/html">HTML</option><option value="ace/mode/html_ruby">HTML (Ruby)</option><option value="ace/mode/ini">INI</option><option value="ace/mode/jack">Jack</option><option value="ace/mode/jade">Jade</option><option value="ace/mode/java">Java</option><option value="ace/mode/javascript">JavaScript</option><option value="ace/mode/json">JSON</option><option value="ace/mode/jsoniq">JSONiq</option><option value="ace/mode/jsp">JSP</option><option value="ace/mode/jsx">JSX</option><option value="ace/mode/julia">Julia</option><option value="ace/mode/latex">LaTeX</option><option value="ace/mode/less">LESS</option><option value="ace/mode/liquid">Liquid</option><option value="ace/mode/lisp">Lisp</option><option value="ace/mode/livescript">LiveScript</option><option value="ace/mode/logiql">LogiQL</option><option value="ace/mode/lsl">LSL</option><option value="ace/mode/lua">Lua</option><option value="ace/mode/luapage">LuaPage</option><option value="ace/mode/lucene">Lucene</option><option value="ace/mode/makefile">Makefile</option><option value="ace/mode/matlab">MATLAB</option><option value="ace/mode/markdown">Markdown</option><option value="ace/mode/mel">MEL</option><option value="ace/mode/mysql">MySQL</option><option value="ace/mode/mushcode">MUSHCode</option><option value="ace/mode/nix">Nix</option><option value="ace/mode/objectivec">Objective-C</option><option value="ace/mode/ocaml">OCaml</option><option value="ace/mode/pascal">Pascal</option><option value="ace/mode/perl">Perl</option><option value="ace/mode/pgsql">pgSQL</option><option value="ace/mode/php">PHP</option><option value="ace/mode/powershell">Powershell</option><option value="ace/mode/prolog">Prolog</option><option value="ace/mode/properties">Properties</option><option value="ace/mode/protobuf">Protobuf</option><option value="ace/mode/python">Python</option><option value="ace/mode/r">R</option><option value="ace/mode/rdoc">RDoc</option><option value="ace/mode/rhtml">RHTML</option><option value="ace/mode/ruby">Ruby</option><option value="ace/mode/rust">Rust</option><option value="ace/mode/sass">SASS</option><option value="ace/mode/scad">SCAD</option><option value="ace/mode/scala">Scala</option><option value="ace/mode/smarty">Smarty</option><option value="ace/mode/scheme">Scheme</option><option value="ace/mode/scss">SCSS</option><option value="ace/mode/sh">SH</option><option value="ace/mode/sjs">SJS</option><option value="ace/mode/space">Space</option><option value="ace/mode/snippets">snippets</option><option value="ace/mode/soy_template">Soy Template</option><option value="ace/mode/sql">SQL</option><option value="ace/mode/stylus">Stylus</option><option value="ace/mode/svg">SVG</option><option value="ace/mode/tcl">Tcl</option><option value="ace/mode/tex">Tex</option><option value="ace/mode/text">Text</option><option value="ace/mode/textile">Textile</option><option value="ace/mode/toml">Toml</option><option value="ace/mode/twig">Twig</option><option value="ace/mode/typescript">Typescript</option><option value="ace/mode/vbscript">VBScript</option><option value="ace/mode/velocity">Velocity</option><option value="ace/mode/verilog">Verilog</option><option value="ace/mode/xml">XML</option><option value="ace/mode/xquery">XQuery</option><option value="ace/mode/yaml">YAML</option></select>
       </td>
     </tr>
-    <tr>
+    <!--<tr>
       <td>
         <label for="split">Split</label>
       </td><td>
@@ -169,14 +169,15 @@
       </td><td>
         <input type="checkbox" id="show_print_margin" checked>
       </td>
-    </tr>
+    </tr>-->
     <tr>
       <td >
         <label for="soft_tab">Use Soft Tab</label>
       </td><td>
-        <input type="checkbox" id="soft_tab" checked>
+        <input type="checkbox" id="soft_tab" checked="{{softtabs}}">
       </td>
     </tr>
+    <!--
     <tr>
       <td >
         <label for="highlight_selected_word">Highlight selected word</label>
@@ -224,16 +225,16 @@
       <td>
         <input type="checkbox" id="highlight_token">
       </td>
-    </tr>
+    </tr> -->
     <tr>
       <td >
         <label for="read_only">Read-only</label>
       </td>
       <td>
-        <input type="checkbox" id="read_only">
+        <input type="checkbox" id="read_only" checked="{{readonly}}">
       </td>
     </tr>
-    <tr>
+    <!-- <tr>
       <td >
         <label for="scrollPastEnd">Scroll Past End</label>
       </td>
@@ -250,14 +251,19 @@
   </td></tr> -->
   </table>
   
-  <a href="http://ace.c9.io">
-    <img id="ace-logo" src="http://ace.c9.io/doc/site/images/ace-logo.png" style="width: 134px;margin: 46px 0px 4px 66px;">
-  </a>
 
   </div>
   </div>
 </div>
-  <tomalec-ace-editor id="editor-container" theme="{{theme}}" mode="{{mode}}" fontsize="{{fontsize}}">Type your code here, to test.
+  <tomalec-ace-editor id="editor-container" theme="{{theme}}" mode="{{mode}}" fontsize="{{fontsize}}" readonly="{{readonly}}">Type your code here, to test.
+
+   &lt;tomalec-ace-editor 
+      theme="{{theme}}"
+      mode="{{mode}}" 
+      fontsize="{{fontsize}}"
+      readonly="{{readonly}}"
+      softtabs="{{softtabs}}"
+    &gt;Type your code here... &lt;/tomalec-ace-editor&gt;
 
   Sorry I was to lazy to get through http://ace.c9.io/build/kitchen-sink/demo.js ;)</tomalec-ace-editor>
 
@@ -272,7 +278,10 @@
     
 </template>
 <script type="text/javascript">
-    document.querySelector("template").model = {};
+    document.querySelector("template").model = {
+      softtabs: true,
+      mode: "ace/mode/html"
+    };
 </script>
 
 </body>
