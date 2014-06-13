@@ -1,7 +1,8 @@
 # &lt;tomalec-ace-editor&gt;
 
-> Custom Element with [Ace](http://ace.c9.io/) code editor.
->
+> Even <strong>more</strong> embeddable code editor. 
+> Custom Element - just one tag, and no JS needed to provide 
+> [Ace](http://ace.c9.io/) - The High Performance Code Editor
 
 ## Demo
 
