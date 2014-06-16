@@ -27,7 +27,7 @@ You can still fiddle with Ace editor programmatically using `<juicy-ace-editor>.
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install juicy/juicy-ace-editor --save
+$ bower install juicy-ace-editor --save
 ```
 
 Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zip).
@@ -54,19 +54,19 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zi
 
 ## Attributes
 
-Attribute     | Options     | Default      | Description
----           | ---         | ---          | ---
-`theme`        | *String*    | ``        | `Editor#setTheme` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`mode`         | *String*    | ``        | `EditSession#setMode` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`fontsize`     | *String*    | ``        | `Editor#setFontSize` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`softtabs`    | *Boolean* | `` | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`readonly`    | *Boolean* | `` | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+Attribute  | Options   | Default | Description
+---        | ---       | ---     | ---
+`theme`    | *String*  | ``      | `Editor#setTheme` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`mode`     | *String*  | ``      | `EditSession#setMode` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`fontsize` | *String*  | ``      | `Editor#setFontSize` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`softtabs` | *Boolean* | ``      | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`readonly` | *Boolean* | ``      | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
 
 ## Properties
 
 Name        |  Description
----           | ---
-`editor`   | Ace [editor](http://ace.c9.io/#nav=api&api=editor) object.
+---         | ---
+`editor`    | Ace [editor](http://ace.c9.io/#nav=api&api=editor) object.
 
 ## Contributing
 
@@ -78,7 +78,8 @@ Name        |  Description
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/juicy/juicy-ace-editor/releases).
+#### 0.0.1
+ - Moved and renamed from [tomalec/tomalec-ace-editor](https://github.com/tomalec/tomalec-ace-editor) to [Juicy/juicy-ace-editor](https://github.com/juicy/juicy-ace-editor)
 
 ## License
 
