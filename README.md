@@ -1,4 +1,4 @@
-# &lt;tomalec-ace-editor&gt;
+# &lt;juicy-ace-editor&gt;
 
 > Even <strong>more</strong> embeddable code editor. 
 > Custom Element - just one tag, and no JS needed to provide 
@@ -6,20 +6,20 @@
 
 ## Demo
 
-[Check it live!](http://tomalec.github.io/tomalec-ace-editor)
+[Check it live!](http://juicy.github.io/juicy-ace-editor)
 
-[Play & Configure with kitchen sink](http://tomalec.github.io/tomalec-ace-editor/kitchen-sink.html)
+[Play & Configure with kitchen sink](http://juicy.github.io/juicy-ace-editor/kitchen-sink.html)
 
 ## Features
 
-Besides Ace features, `<tomalec-ace-editor>` does:
+Besides Ace features, `<juicy-ace-editor>` does:
 
  - provide extremely clean and easy way to embed it (see [Usage](#usage))
  - observe DOM changes:
   - Update your code by just updating Element's text content
   - Change Editor's setting by changing DOM [attributes](#attributes)
 
-You can still fiddle with Ace editor programmatically using `<tomalec-ace-editor>.editor`.
+You can still fiddle with Ace editor programmatically using `<juicy-ace-editor>.editor`.
 
 
 ## Install
@@ -27,10 +27,10 @@ You can still fiddle with Ace editor programmatically using `<tomalec-ace-editor
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install tomalec/tomalec-ace-editor --save
+$ bower install juicy/juicy-ace-editor --save
 ```
 
-Or [download as ZIP](https://github.com/tomalec/tomalec-ace-editor/archive/master.zip).
+Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zip).
 
 ## Usage
 
@@ -43,13 +43,13 @@ Or [download as ZIP](https://github.com/tomalec/tomalec-ace-editor/archive/maste
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/tomalec-ace-editor/src/tomalec-ace-editor.html">
+    <link rel="import" href="bower_components/juicy-ace-editor/src/juicy-ace-editor.html">
     ```
 
 3. Start using it!
 
     ```html
-    <tomalec-ace-editor>Editable code here</tomalec-ace-editor>
+    <juicy-ace-editor>Editable code here</juicy-ace-editor>
     ```
 
 ## Attributes
@@ -78,7 +78,7 @@ Name        |  Description
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/tomalec/tomalec-ace-editor/releases).
+For detailed changelog, check [Releases](https://github.com/juicy/juicy-ace-editor/releases).
 
 ## License
 
