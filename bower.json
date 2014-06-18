@@ -13,10 +13,11 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "preview.png"
+    "preview.png",
+    "ace/src-noconflict"
   ],
   "dependencies": {
-    "platform": "Polymer/platform#~0.3.1"
+    "platform": "Polymer/platform#~0.3.2"
   },
   "homepage": "https://github.com/Juicy/juicy-ace-editor",
   "authors": [
