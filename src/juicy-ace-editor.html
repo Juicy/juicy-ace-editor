@@ -64,6 +64,18 @@
 
         this.editor = editor;
 
+        // Observe input textNode changes
+        // Could be buggy as editor was also added to Light DOM;
+            var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                console.log("observation", mutation.type, arguments, mutations, editor, text);
+                if(mutation.type == "characterData"){
+                    editor.setValue(text.data);
+                }
+              });
+            });
+            text && observer.observe(text, { characterData: true });
+        // container.appendChild(text);
     };
 
     // Fires when an instance was removed from the document
