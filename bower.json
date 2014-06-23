@@ -18,7 +18,7 @@
     "img"
   ],
   "dependencies": {
-    "platform": "Polymer/platform#~0.3.2"
+    "platform": "Polymer/platform#~0.3.3"
   },
   "homepage": "https://github.com/Juicy/juicy-ace-editor",
   "authors": [

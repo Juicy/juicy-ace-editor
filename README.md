@@ -37,7 +37,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zi
 1. Import Web Components' polyfill:
 
     ```html
-    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.3.2/platform.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.3.3/platform.js"></script>
     ```
 
 2. Import Custom Element:
