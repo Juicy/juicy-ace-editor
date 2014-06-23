@@ -14,7 +14,8 @@
     "node_modules",
     "bower_components",
     "preview.png",
-    "ace/src-noconflict"
+    "ace/src-noconflict",
+    "img"
   ],
   "dependencies": {
     "platform": "Polymer/platform#~0.3.2"
