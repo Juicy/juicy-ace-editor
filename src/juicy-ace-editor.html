@@ -36,6 +36,15 @@
         // Creates the shadow root
         var shadowRoot = this.createShadowRoot();
 
+        // Shim CSS if needed 
+        // http://stackoverflow.com/questions/24497569/content-polyfill-for-vanillajs-templates-and-custom-elements
+        if (Platform.ShadowCSS) {
+          var style = template.querySelector('style');
+
+          var cssText = Platform.ShadowCSS.shimCssText(
+              style.textContent, 'juicy-ace-editor');
+          Platform.ShadowCSS.addCssToDocument(cssText);
+        }
         // Adds a template clone into shadow root
         var clone = thatDoc.importNode(template, true);
         shadowRoot.appendChild(clone);
