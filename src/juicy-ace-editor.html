@@ -63,7 +63,7 @@
             text && container.appendChild(text);
 
 
-        var editor = ace.edit(container);
+        var editor = this.editor || ace.edit(container);
         // initial attributes
             editor.setTheme( this.getAttribute("theme") );
             editor.setFontSize( this.getAttribute("fontsize") );
@@ -87,13 +87,19 @@
             });
             text && observer.observe(text, { characterData: true });
         // container.appendChild(text);
+        this._attached = true;
     };
 
     // Fires when an instance was removed from the document
-    // TomalecAceEditorPrototype.detachedCallback = function() {};
+    TomalecAceEditorPrototype.detachedCallback = function() {
+        this._attached = false;
+    };
 
     // Fires when an attribute was added, removed, or updated
     TomalecAceEditorPrototype.attributeChangedCallback = function(attr, oldVal, newVal) {
+        if(!this._attached){
+            return false;
+        }
         switch(attr){
             case "theme":
                 this.editor.setTheme( newVal );
