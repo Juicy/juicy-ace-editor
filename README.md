@@ -37,7 +37,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zi
 1. Import Web Components' polyfill:
 
     ```html
-    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.3.3/platform.js"></script>
+    <script src="//cdn.jsdelivr.net/polymer.platform/0.4.2/platform.js"></script>
     ```
 
 2. Import Custom Element:
@@ -76,10 +76,10 @@ Name        |  Description
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
+
 ## History
 
-#### 0.0.1
- - Moved and renamed from [tomalec/tomalec-ace-editor](https://github.com/tomalec/tomalec-ace-editor) to [Juicy/juicy-ace-editor](https://github.com/juicy/juicy-ace-editor)
+For detailed changelog, check [Releases](https://github.com/PuppetJs/redirect/releases).
 
 ## License
 

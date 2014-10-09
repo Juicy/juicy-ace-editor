@@ -1,6 +1,6 @@
 {
   "name": "juicy-ace-editor",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "description": "Custom Element with Ace(http://ace.c9.io/) code editor",
   "license": "MIT",
   "main": "src/juicy-ace-editor.html",
@@ -18,7 +18,7 @@
     "img"
   ],
   "dependencies": {
-    "platform": "Polymer/platform#~0.3.3"
+    "platform": "Polymer/platform#^0.4.0"
   },
   "homepage": "https://github.com/Juicy/juicy-ace-editor",
   "authors": [
