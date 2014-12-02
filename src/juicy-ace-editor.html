@@ -64,6 +64,13 @@
 
 
         var editor = this.editor || ace.edit(container);
+
+        // inject base editor styles
+        this.injectTheme('#ace_editor');
+
+        // handle theme changes
+        editor.renderer.addEventListener("themeLoaded", this.onThemeLoaded.bind(this));
+
         // initial attributes
             editor.setTheme( this.getAttribute("theme") );
             editor.setFontSize( this.getAttribute("fontsize") );
@@ -119,6 +126,26 @@
 
         }
     };
+
+
+    TomalecAceEditorPrototype.onThemeLoaded = function(e){
+        var themeId = "#" + e.theme.cssClass;
+        this.injectTheme(themeId);
+    }
+
+    // inject the style tag of a theme to the element
+    TomalecAceEditorPrototype.injectTheme = function(themeId){
+        var n = document.querySelector(themeId);
+        this.appendChild(cloneStyle(n));
+    }
+
+    //helper function to clone a style
+    function cloneStyle(style) {
+        var s = document.createElement('style');
+        s.id = style.id;
+        s.textContent = style.textContent;
+        return s;
+    }
 
     document.registerElement('juicy-ace-editor', {
         prototype: TomalecAceEditorPrototype
