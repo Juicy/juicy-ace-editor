@@ -179,6 +179,13 @@
         <input type="checkbox" id="soft_tab" checked="{{softtabs}}">
       </td>
     </tr>
+    <tr>
+      <td >
+        <label for="tabsize">Tab Size</label>
+      </td><td>
+        <input type="text" id="tabsize" value="{{tabsize}}" placeholder="4">
+      </td>
+    </tr>
     <!--
     <tr>
       <td >
@@ -257,7 +264,14 @@
   </div>
   </div>
 </div>
-  <juicy-ace-editor id="editor-container" theme="{{theme}}" mode="{{mode}}" fontsize="{{fontsize}}" readonly="{{readonly}}">Type your code here, to test.
+  <juicy-ace-editor 
+      id="editor-container" 
+      theme="{{theme}}" 
+      mode="{{mode}}" 
+      fontsize="{{fontsize}}" 
+      readonly="{{readonly}}"
+      softtabs="{{softtabs}}"
+      tabsize="{{tabsize}}">Type your code here, to test.
 
    &lt;juicy-ace-editor 
       theme="{{theme}}"
@@ -265,7 +279,10 @@
       fontsize="{{fontsize}}"
       readonly="{{readonly}}"
       softtabs="{{softtabs}}"
+      tabsize="{{tabsize}}"
     &gt;Type your code here... &lt;/juicy-ace-editor&gt;
+
+  &lt;strong&gt;Please, note that all those attributes are optional.&lt;/strong&gt;
 
   Sorry I was to lazy to get through http://ace.c9.io/build/kitchen-sink/demo.js ;)</juicy-ace-editor>
 

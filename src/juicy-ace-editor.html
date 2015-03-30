@@ -83,6 +83,7 @@
             var session = editor.getSession();
             session.setMode( this.getAttribute("mode") );
             session.setUseSoftTabs( this.getAttribute("softtabs") );
+            this.getAttribute("tabsize") && session.setTabSize( this.getAttribute("tabsize") );
 
 
         this.editor = editor;
@@ -125,6 +126,9 @@
             case "softtabs":
                 this.editor.getSession().setUseSoftTabs( newVal );
                 break;
+            case "tabsize":
+                this.editor.getSession().setTabSize( newVal );
+                break;
             case "readonly":
                 this.editor.setReadOnly( newVal );
                 break;
@@ -136,13 +140,13 @@
     TomalecAceEditorPrototype.onThemeLoaded = function(e){
         var themeId = "#" + e.theme.cssClass;
         this.injectTheme(themeId);
-    }
+    };
 
     // inject the style tag of a theme to the element
     TomalecAceEditorPrototype.injectTheme = function(themeId){
         var n = document.querySelector(themeId);
         this.appendChild(cloneStyle(n));
-    }
+    };
 
     //helper function to clone a style
     function cloneStyle(style) {
