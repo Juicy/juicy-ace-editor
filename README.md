@@ -30,14 +30,14 @@ Install the component using [Bower](http://bower.io/):
 $ bower install juicy-ace-editor --save
 ```
 
-Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zip).
+Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.zip).
 
 ## Usage
 
-1. Import Web Components' polyfill:
+1. Import Web Components' polyfill (if needed):
 
     ```html
-    <script src="//cdn.jsdelivr.net/polymer.platform/0.4.2/platform.js"></script>
+    <script src="//cdn.jsdelivr.net/webcomponentsjs/0.6.0/webcomponents.min.js"></script>
     ```
 
 2. Import Custom Element:
