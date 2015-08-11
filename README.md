@@ -1,7 +1,7 @@
 # &lt;juicy-ace-editor&gt;
 
-> Even <strong>more</strong> embeddable code editor. 
-> Custom Element - just one tag, and no JS needed to provide 
+> Even <strong>more</strong> embeddable code editor.
+> Custom Element - just one tag, and no JS needed to provide
 > [Ace](http://ace.c9.io/) - The High Performance Code Editor
 
 ## Demo
@@ -21,6 +21,9 @@ Besides Ace features, `<juicy-ace-editor>` does:
 
 You can still fiddle with Ace editor programmatically using `<juicy-ace-editor>.editor`.
 
+## Polymer 1.0
+
+It works in Polymer 1.0 as well, you can checkout [polymer_1.0](https://github.com/Juicy/juicy-ace-editor/tree/polymer_1.0) branch
 
 ## Install
 
