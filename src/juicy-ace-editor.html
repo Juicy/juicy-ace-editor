@@ -41,7 +41,7 @@
         // Creates the shadow root
         var shadowRoot = this.createShadowRoot();
 
-        // Shim CSS if needed 
+        // Shim CSS if needed
         // http://stackoverflow.com/questions/24497569/content-polyfill-for-vanillajs-templates-and-custom-elements
         if (Platform.ShadowCSS) {
           var style = template.querySelector('style');
@@ -92,7 +92,7 @@
         // Could be buggy as editor was also added to Light DOM;
             var observer = new MutationObserver(function(mutations) {
               mutations.forEach(function(mutation) {
-                console.log("observation", mutation.type, arguments, mutations, editor, text);
+                // console.log("observation", mutation.type, arguments, mutations, editor, text);
                 if(mutation.type == "characterData"){
                     editor.setValue(text.data);
                 }
