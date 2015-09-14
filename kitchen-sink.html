@@ -272,35 +272,36 @@
       fontsize$="{{model.fontsize}}"
       readonly$="{{model.readonly}}"
       softtabs$="{{model.softtabs}}"
-      tabsize$="{{model.tabsize}}">Type your code here, to test.
+      tabsize$="{{model.tabsize}}">{{interpolate(model)}}</juicy-ace-editor>
+</template>
+<template id="editorInnerHTML">Type your code here, to test.
 
    &lt;juicy-ace-editor
-      theme$="{{model.theme}}"
-      mode$="{{model.mode}}"
-      fontsize$="{{model.fontsize}}"
-      readonly$="{{model.readonly}}"
-      softtabs$="{{model.softtabs}}"
-      tabsize$="{{model.tabsize}}"
+      theme="{{theme}}"
+      mode="{{mode}}"
+      fontsize="{{fontsize}}"
+      readonly="{{readonly}}"
+      softtabs="{{softtabs}}"
+      tabsize="{{tabsize}}"
     &gt;Type your code here... &lt;/juicy-ace-editor&gt;
 
   &lt;strong&gt;Please, note that all those attributes are optional.&lt;/strong&gt;
 
-  Sorry I was to lazy to get through http://ace.c9.io/build/kitchen-sink/demo.js ;)</juicy-ace-editor>
-
-
-<!--
-  <script src="http://ace.c9.io/build/src/keybinding-vim.js"></script>
-  <script src="http://ace.c9.io/build/src/keybinding-emacs.js"></script>
-  <script src="http://ace.c9.io/build/kitchen-sink/demo.js"></script>
-  <script type="text/javascript" charset="utf-8">
-    // require("kitchen-sink/demo");
-  </script> -->
-
+  Sorry I was to lazy to get through http://ace.c9.io/build/kitchen-sink/demo.js ;)
 </template>
+
+
 <script type="text/javascript">
-document.querySelector("template").model = {
+var domBind = document.querySelector("template")
+domBind.model = {
   softtabs: true,
   mode: "ace/mode/html"
+};
+var templateText = document.querySelector("#editorInnerHTML").innerHTML;
+domBind.interpolate = function(model){
+    return templateText.replace(/{{([^}]+)}}/g, function(pat, match){
+        return model[match] !== undefined ? model[match] : "";
+    });
 };
 </script>
 
