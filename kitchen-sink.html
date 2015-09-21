@@ -100,6 +100,13 @@
         </select>
       </td>
     </tr> -->
+    <tr>
+      <td >
+        <label for="wrapmode">Wrap Mode</label>
+      </td><td>
+        <input type="checkbox" id="wrapmode" checked="{{wrapmode::click}}">
+      </td>
+    </tr>
     <!-- <tr>
       <td >
         <label for="soft_wrap">Soft Wrap</label>
@@ -259,6 +266,11 @@
     </tr>
   </table>
   </td></tr> -->
+      <tr>
+        <td colspan="2">
+          <input type="button" value="Stamp values" on-click="stampValues">
+        </td>
+      </tr>
   </table>
 
 
@@ -272,17 +284,13 @@
       fontsize$="{{fontsize}}"
       readonly$="{{readonly}}"
       softtabs$="{{softtabs}}"
-      tabsize$="{{tabsize}}">{{interpolate(theme,mode,fontsize,readonly,softtabs,tabsize)}}</juicy-ace-editor>
+      tabsize$="{{tabsize}}"
+      wrapmode$="{{wrapmode}}"
+      >[[text]]</juicy-ace-editor>
 </template>
 <script type="text" id="editorInnerHTML">Type your code here, to test.
 
-   <juicy-ace-editor
-      theme="{{theme}}"
-      mode="{{mode}}"
-      fontsize="{{fontsize}}"
-      readonly="{{readonly}}"
-      softtabs="{{softtabs}}"
-      tabsize="{{tabsize}}"
+    <juicy-ace-editor{{theme}}{{mode}}{{fontsize}}{{readonly}}{{softtabs}}{{tabsize}}{{wrapmode}}
     >Type your code here... </juicy-ace-editor>
 
     <strong>Please, note that all those attributes are optional.</strong>
@@ -295,17 +303,14 @@
 var domBind = document.querySelector("template")
 domBind.softtabs= true;
 domBind.mode= "ace/mode/html";
-domBind.theme = null;
-domBind.fontsize = null;
-domBind.readonly = null;
-domBind.tabsize = null;
 
 var templateText = document.querySelector("#editorInnerHTML").innerText;
-domBind.interpolate = function(model){
-    return templateText.replace(/{{([^}]+)}}/g, function(pat, match){
-        return domBind[match] !== null ? domBind[match] : "";
+domBind.stampValues = function(){
+    domBind.text = templateText.replace(/{{([^}]+)}}/g, function(pat, match){
+        return domBind[match] !== undefined ? "\n\t  " +match + '="' + domBind[match] +'"' : "";
     });
 };
+domBind.stampValues();
 </script>
 
 </body>

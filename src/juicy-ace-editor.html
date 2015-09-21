@@ -6,18 +6,20 @@
 <script src="../../ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
 <template>
-    <style shim-shadowdom>
+    <style>
         :host{
             display: block;
+            position: relative;
         }
-
-        polyfill-next-selector { content: ':host #juicy-ace-editor-container'; }
-        ::content #juicy-ace-editor-container{
+        #juicy-ace-editor-container{
             width: 100%;
             height: 100%;
             display: block;
+
+            position: absolute;
         }
     </style>
+    <div id="juicy-ace-editor-container"></div>
     <content></content>
 </template>
 <script>
@@ -26,7 +28,7 @@
     var thatDoc = document;
 
     // Refers to the "importee", which is src/juicy-ace-editor.html
-    var thisDoc = document._currentScript.ownerDocument;
+    var thisDoc = (document._currentScript || document.currentScript).ownerDocument;
 
     // Gets content from <template>
     var template = thisDoc.querySelector('template').content;
@@ -36,40 +38,45 @@
 
     // Fires when an instance of the element is created
     TomalecAceEditorPrototype.createdCallback = function() {
+        var value;
+        Object.defineProperty(this, "value", {
+            set: function(val){
+                this.editor && this.editor.setValue( val );
+                value = val;
+            },
+            get: function(){
+                value = this.editor && this.editor.getValue() || value;
+                return value;
+            }
+        });
+
         // Creates the shadow root
         var shadowRoot = this.createShadowRoot();
-
-        // Shim CSS if needed
-        // http://stackoverflow.com/questions/24497569/content-polyfill-for-vanillajs-templates-and-custom-elements
-        if (Platform.ShadowCSS) {
-          var style = template.querySelector('style');
-
-          var cssText = Platform.ShadowCSS.shimCssText(
-              style.textContent, 'juicy-ace-editor');
-          Platform.ShadowCSS.addCssToDocument(cssText);
-        }
         // Adds a template clone into shadow root
         var clone = thatDoc.importNode(template, true);
+        this.container = clone.getElementById("juicy-ace-editor-container");
         shadowRoot.appendChild(clone);
     };
 
     // Fires when an instance was inserted into the document
     TomalecAceEditorPrototype.attachedCallback = function() {
 
-            var text = this.childNodes[0];
-        var container = document.createElement("div");
-            container.id = "juicy-ace-editor-container";
-        // shadowRoot.appendChild(container);
-        // Workaround as CSS styles are added to main document, and does not cross Shadow DOM boundry
-            // this.appendChild(container);
-            this.insertBefore(container, this.firstChild);
-            text && container.appendChild(text);
+        var text = this.childNodes[0];
+        var container = this.container;
 
+        if(this.editor){
+            editor = this.editor;
+            this.value = text.textContent || this.value;
+        } else {
+            // container.appendChild(text);
+            container.innerHTML = this.innerHTML || this.value;
+            editor = ace.edit(container);
+            this.editor = editor;
 
-        var editor = this.editor || ace.edit(container);
-
-        // inject base editor styles
-        this.injectTheme('#ace-tm');
+            // inject base editor styles
+            this.injectTheme('#ace_editor\\.css');
+            this.injectTheme('#ace-tm');
+        }
 
         // handle theme changes
         editor.renderer.addEventListener("themeLoaded", this.onThemeLoaded.bind(this));
@@ -82,17 +89,17 @@
             session.setMode( this.getAttribute("mode") );
             session.setUseSoftTabs( this.getAttribute("softtabs") );
             this.getAttribute("tabsize") && session.setTabSize( this.getAttribute("tabsize") );
+            session.setUseWrapMode( this.hasAttribute("wrapmode") );
 
 
-        this.editor = editor;
-
+        var element = this;
         // Observe input textNode changes
         // Could be buggy as editor was also added to Light DOM;
             var observer = new MutationObserver(function(mutations) {
               mutations.forEach(function(mutation) {
                 // console.log("observation", mutation.type, arguments, mutations, editor, text);
                 if(mutation.type == "characterData"){
-                    editor.setValue(text.data);
+                    element.value = text.data;
                 }
               });
             });
@@ -130,6 +137,9 @@
             case "readonly":
                 this.editor.setReadOnly( newVal );
                 break;
+            case "wrapmode":
+                this.editor.getSession().setUseWrapMode( newVal !== null );
+                break;
 
         }
     };
@@ -138,12 +148,16 @@
     TomalecAceEditorPrototype.onThemeLoaded = function(e){
         var themeId = "#" + e.theme.cssClass;
         this.injectTheme(themeId);
+        // Workaround Chrome stable bug, force repaint
+        this.container.style.display='none';
+        this.container.offsetHeight;
+        this.container.style.display='';
     };
 
     // inject the style tag of a theme to the element
     TomalecAceEditorPrototype.injectTheme = function(themeId){
         var n = document.querySelector(themeId);
-        this.appendChild(cloneStyle(n));
+        this.shadowRoot.appendChild(cloneStyle(n));
     };
 
     //helper function to clone a style
