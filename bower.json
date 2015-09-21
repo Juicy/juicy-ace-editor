@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Custom Element with Ace(http://ace.c9.io/) code editor",
   "license": "MIT",
-  "main": "src/juicy-ace-editor.html",
+  "main": "juicy-ace-editor.html",
   "keywords": [
     "web-components",
     "ace",

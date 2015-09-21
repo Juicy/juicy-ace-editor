@@ -42,7 +42,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/juicy-ace-editor/src/juicy-ace-editor.html">
+    <link rel="import" href="bower_components/juicy-ace-editor/juicy-ace-editor.html">
     ```
 
 3. Start using it!
