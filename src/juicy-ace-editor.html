@@ -38,7 +38,7 @@
 
     // Fires when an instance of the element is created
     TomalecAceEditorPrototype.createdCallback = function() {
-        var value;
+        var value = "";
         Object.defineProperty(this, "value", {
             set: function(val){
                 this.editor && this.editor.setValue( val );
@@ -60,9 +60,9 @@
 
     // Fires when an instance was inserted into the document
     TomalecAceEditorPrototype.attachedCallback = function() {
-
         var text = this.childNodes[0];
         var container = this.container;
+        var element = this;
 
         if(this.editor){
             editor = this.editor;
@@ -76,6 +76,11 @@
             // inject base editor styles
             this.injectTheme('#ace_editor\\.css');
             this.injectTheme('#ace-tm');
+
+
+            editor.getSession().on('change', function(event){
+                element.dispatchEvent(new CustomEvent("change", {detail: event}));
+            });
         }
 
         // handle theme changes
@@ -92,7 +97,6 @@
             session.setUseWrapMode( this.hasAttribute("wrapmode") );
 
 
-        var element = this;
         // Observe input textNode changes
         // Could be buggy as editor was also added to Light DOM;
             var observer = new MutationObserver(function(mutations) {

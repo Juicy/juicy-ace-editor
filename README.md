@@ -21,10 +21,6 @@ Besides Ace features, `<juicy-ace-editor>` does:
 
 You can still fiddle with Ace editor programmatically using `<juicy-ace-editor>.editor`.
 
-## Polymer 1.0
-
-It works in Polymer 1.0 as well, you can checkout [polymer_1.0](https://github.com/Juicy/juicy-ace-editor/tree/polymer_1.0) branch
-
 ## Install
 
 Install the component using [Bower](http://bower.io/):
@@ -65,12 +61,20 @@ Attribute  | Options   | Default | Description
 `softtabs` | *Boolean* | ``      | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
 `tabsize`  | *Boolean* | ``      | `Session#setTabSize()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
 `readonly` | *Boolean* | ``      | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`wrapmode` | *Boolean* | ``      | `Session#setWrapMode()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
 
 ## Properties
 
 Name        |  Description
 ---         | ---
 `editor`    | Ace [editor](http://ace.c9.io/#nav=api&api=editor) object.
+`value`     | [editor.get-/setValue()](http://ace.c9.io/#nav=api&api=editor)
+
+## Events
+
+Name        |  Description
+---         | ---
+`change`    | Triggered when editor content gets changed
 
 ## Contributing
 
