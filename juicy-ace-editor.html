@@ -71,6 +71,7 @@
             // container.appendChild(text);
             container.innerHTML = this.innerHTML || this.value;
             editor = ace.edit(container);
+            this.dispatchEvent(new CustomEvent("editor-ready", {detail: editor}));
             this.editor = editor;
 
             // inject base editor styles
