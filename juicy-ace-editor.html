@@ -91,7 +91,7 @@
         // initial attributes
             editor.setTheme( this.getAttribute("theme") );
             editor.setFontSize( this.getAttribute("fontsize") );
-            editor.setReadOnly( this.getAttribute("readonly") );
+            editor.setReadOnly( this.hasAttribute("readonly") );
             var session = editor.getSession();
             session.setMode( this.getAttribute("mode") );
             session.setUseSoftTabs( this.getAttribute("softtabs") );
@@ -141,7 +141,7 @@
                 this.editor.getSession().setTabSize( newVal );
                 break;
             case "readonly":
-                this.editor.setReadOnly( newVal );
+                this.editor.setReadOnly( newVal === '' || newVal );
                 break;
             case "wrapmode":
                 this.editor.getSession().setUseWrapMode( newVal !== null );
