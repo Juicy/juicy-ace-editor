@@ -5,6 +5,7 @@
     @demo index.html
 -->
 <script src="../ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ace-builds/src-min-noconflict/ext-searchbox.js" type="text/javascript" charset="utf-8"></script>
 
 <template id="juicy-ace-editor">
     <style>
@@ -78,7 +79,7 @@
             // inject base editor styles
             this.injectTheme('#ace_editor\\.css');
             this.injectTheme('#ace-tm');
-
+            this.injectTheme('#ace_searchbox');
 
             editor.getSession().on('change', function(event){
                 element.dispatchEvent(new CustomEvent("change", {detail: event}));
