@@ -1,6 +1,6 @@
 {
   "name": "juicy-ace-editor",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Custom Element with Ace(http://ace.c9.io/) code editor",
   "license": "MIT",
   "main": "juicy-ace-editor.html",
