@@ -55,13 +55,13 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.
 
 Attribute  | Options   | Default | Description
 ---        | ---       | ---     | ---
-`theme`    | *String*  | ``      | `Editor#setTheme` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`mode`     | *String*  | ``      | `EditSession#setMode` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`fontsize` | *String*  | ``      | `Editor#setFontSize` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`softtabs` | *Boolean* | ``      | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`tabsize`  | *Boolean* | ``      | `Session#setTabSize()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`readonly` | *Boolean* | ``      | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`wrapmode` | *Boolean* | ``      | `Session#setWrapMode()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`theme`    | *String*  |         | `Editor#setTheme` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`mode`     | *String*  |         | `EditSession#setMode` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`fontsize` | *String*  |         | `Editor#setFontSize` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`softtabs` | *Boolean* |         | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`tabsize`  | *Boolean* |         | `Session#setTabSize()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`readonly` | *Boolean* |         | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`wrapmode` | *Boolean* |         | `Session#setWrapMode()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
 
 ## Properties
 
@@ -76,6 +76,14 @@ Name           |  Description
 ---            | ---
 `change`       | Triggered when editor content gets changed
 `editor-ready` | Triggered once Ace editor instance is created.
+
+## Who uses it?
+
+- [**Starcounter** In-memory application engine](http://starcounter.com/)
+- [**LEAN** Theorem prover by Microsoft Research](https://leanprover.github.io/)
+- [**Polymer/polyup** Polymer migration tool](http://polymerlabs.github.io/polyup/)
+- [**You** ...?](https://github.com/Juicy/juicy-ace-editor/edit/gh-pages/README.md#L81)
+
 
 ## Contributing
 
