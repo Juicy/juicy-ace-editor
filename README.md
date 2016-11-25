@@ -46,7 +46,16 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.
     ```
 
 3. Start using it!
-
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="juicy-ace-editor.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
     ```html
     <juicy-ace-editor>Editable code here</juicy-ace-editor>
     ```
