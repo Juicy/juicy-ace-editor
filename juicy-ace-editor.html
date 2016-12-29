@@ -94,7 +94,7 @@
 
         // initial attributes
             editor.setTheme( this.getAttribute("theme") );
-            editor.setFontSize( this.getAttribute("fontsize") );
+            editor.setFontSize( parseInt(this.getAttribute("fontsize")) || 12 );
             editor.setReadOnly( this.hasAttribute("readonly") );
             var session = editor.getSession();
             session.setMode( this.getAttribute("mode") );
