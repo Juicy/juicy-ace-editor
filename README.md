@@ -50,6 +50,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.
 ```
 <custom-element-demo>
   <template>
+    <script src="../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="juicy-ace-editor.html">
     <next-code-block></next-code-block>
   </template>
@@ -57,7 +58,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.
 ```
 -->
     ```html
-    <juicy-ace-editor>Editable code here</juicy-ace-editor>
+    <juicy-ace-editor theme="ace/theme/monokai">Type your code here...</juicy-ace-editor>
     ```
 
 ## Attributes
