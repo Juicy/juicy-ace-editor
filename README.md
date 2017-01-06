@@ -46,20 +46,22 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.
     ```
 
 3. Start using it!
-<!--
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents.js"></script>
-    <link rel="import" href="juicy-ace-editor.html">
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
-    ```html
-    <juicy-ace-editor theme="ace/theme/monokai">Type your code here...</juicy-ace-editor>
-    ```
+
+   <!--
+   ```
+   <custom-element-demo>
+     <template>
+       <script src="../webcomponentsjs/webcomponents.js"></script>
+       <link rel="import" href="juicy-ace-editor.html">
+       <next-code-block></next-code-block>
+     </template>
+   </custom-element-demo>
+   ```
+   -->
+
+  ```html
+  <juicy-ace-editor theme="ace/theme/monokai">Type your code here...</juicy-ace-editor>
+  ```
 
 ## Attributes
 
