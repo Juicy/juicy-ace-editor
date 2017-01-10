@@ -29,7 +29,7 @@ Install the component using [Bower](http://bower.io/):
 $ bower install juicy-ace-editor --save
 ```
 
-Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/gh-pages.zip).
+Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zip).
 
 ## Usage
 
@@ -94,7 +94,7 @@ Name           |  Description
 - [**Starcounter** In-memory application engine](http://starcounter.com/)
 - [**LEAN** Theorem prover by Microsoft Research](https://leanprover.github.io/)
 - [**Polymer/polyup** Polymer migration tool](http://polymerlabs.github.io/polyup/)
-- [**You** ...?](https://github.com/Juicy/juicy-ace-editor/edit/gh-pages/README.md#L81)
+- [**You** ...?](https://github.com/Juicy/juicy-ace-editor/edit/master/README.md#L81)
 
 
 ## Contributing
