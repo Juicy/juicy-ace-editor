@@ -25,6 +25,7 @@
     "Tomek Wytrebowicz <tomalecpub@gmail.com>"
   ],
   "devDependencies": {
-    "polymer": "*"
+    "polymer": "*",
+    "document-register-element": "^1.3.0"
   }
 }

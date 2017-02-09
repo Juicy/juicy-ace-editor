@@ -39,35 +39,39 @@
     }
 
     // Creates an object based in the HTML Element prototype
-    var TomalecAceEditorPrototype = Object.create(HTMLElement.prototype);
-
-    // Fires when an instance of the element is created
-    TomalecAceEditorPrototype.createdCallback = function() {
-        var value = "";
-        Object.defineProperty(this, "value", {
-            set: function(val){
-                this.editor && this.editor.setValue( val );
-                value = val;
-            },
-            get: function(){
-                value = this.editor && this.editor.getValue() || value;
-                return value;
-            }
-        });
-
-        // Creates the shadow root
-        var shadowRoot = this.createShadowRoot();
-        // Adds a template clone into shadow root
-        var clone = thatDoc.importNode(template, true);
-        this.container = clone.getElementById("juicy-ace-editor-container");
-        shadowRoot.appendChild(clone);
+    class TomalecAceEditor extends HTMLElement {
+        // Fires when an instance of the element is created
+        constructor(self){
+            // Polyfill ceveat we need to fetch the right context;
+            // https://github.com/WebReflection/document-register-element/tree/master#v1-caveat
+            self = super(self);
+            var value = "";
+            Object.defineProperty(this, "value", {
+                set: function(val){
+                    self.editor && self.editor.setValue( val );
+                    value = val;
+                },
+                get: function(){
+                    value = self.editor && self.editor.getValue() || value;
+                    return value;
+                }
+            });
+            // Creates the shadow root
+            var shadowRoot = self.createShadowRoot();
+            // Adds a template clone into shadow root
+            var clone = thatDoc.importNode(template, true);
+            self.container = clone.getElementById("juicy-ace-editor-container");
+            shadowRoot.appendChild(clone);
+            return self;
+        }
     };
-
+    var TomalecAceEditorPrototype = TomalecAceEditor.prototype;
     // Fires when an instance was inserted into the document
-    TomalecAceEditorPrototype.attachedCallback = function() {
+    TomalecAceEditorPrototype.connectedCallback = function() {
         var text = this.childNodes[0];
         var container = this.container;
         var element = this;
+        var editor;
 
         if(this.editor){
             editor = this.editor;
@@ -119,7 +123,7 @@
     };
 
     // Fires when an instance was removed from the document
-    TomalecAceEditorPrototype.detachedCallback = function() {
+    TomalecAceEditorPrototype.disconnectedCallback = function() {
         this._attached = false;
     };
 
@@ -178,8 +182,6 @@
         return s;
     }
 
-    document.registerElement('juicy-ace-editor', {
-        prototype: TomalecAceEditorPrototype
-    });
+    window.customElements.define('juicy-ace-editor', TomalecAceEditor);
 }(window, document));
 </script>
