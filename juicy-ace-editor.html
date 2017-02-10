@@ -57,7 +57,7 @@
 
         // Creates the shadow root
         var shadowRoot
-        if(this.attachShadow){
+        if(this.attachShadow && this.getRootNode){
             shadowRoot = this.attachShadow({mode:'open'});
         } else {
             shadowRoot = this.createShadowRoot();
