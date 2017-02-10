@@ -37,9 +37,25 @@
     if (window.ShadowDOMPolyfill) {
         WebComponents.ShadowCSS.shimStyling(template, 'juicy-ace-editor');
     }
-
+    var TomalecAceEditorPrototype, TomalecAceEditor;
+    // If CEv1
+    if(window.customElements){
     // Creates an object based in the HTML Element prototype
-    var TomalecAceEditorPrototype = Object.create(HTMLElement.prototype);
+        TomalecAceEditor = class TomalecAceEditor extends HTMLElement {
+        // Fires when an instance of the element is created
+        constructor(self){
+            // Polyfill ceveat we need to fetch the right context;
+            // https://github.com/WebReflection/document-register-element/tree/master#v1-caveat
+            self = super(self);
+                // Use createdCallback from v0
+                TomalecAceEditorPrototype.createdCallback.call(self);
+                return self;
+            }
+        };
+        TomalecAceEditorPrototype = TomalecAceEditor.prototype;
+    } else {
+        TomalecAceEditorPrototype = Object.create(HTMLElement.prototype);
+    }
 
     // Fires when an instance of the element is created
     TomalecAceEditorPrototype.createdCallback = function() {
@@ -69,7 +85,8 @@
     };
 
     // Fires when an instance was inserted into the document
-    TomalecAceEditorPrototype.attachedCallback = function() {
+    TomalecAceEditorPrototype.attachedCallback =
+    TomalecAceEditorPrototype.connectedCallback = function() {
         var text = this.childNodes[0];
         var container = this.container;
         var element = this;
@@ -125,7 +142,8 @@
     };
 
     // Fires when an instance was removed from the document
-    TomalecAceEditorPrototype.detachedCallback = function() {
+    TomalecAceEditorPrototype.detachedCallback =
+    TomalecAceEditorPrototype.disconnectedCallback = function() {
         this._attached = false;
     };
 
@@ -184,8 +202,16 @@
         return s;
     }
 
-    document.registerElement('juicy-ace-editor', {
-        prototype: TomalecAceEditorPrototype
-    });
+
+    // If CEv1
+    if(window.customElements){
+        console.log('cev1')
+        window.customElements.define('juicy-ace-editor', TomalecAceEditor);
+    } else {
+        console.log('cev0')
+        document.registerElement('juicy-ace-editor', {
+            prototype: TomalecAceEditorPrototype
+        });
+    }
 }(window, document));
 </script>
