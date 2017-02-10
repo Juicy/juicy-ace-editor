@@ -56,7 +56,12 @@
         });
 
         // Creates the shadow root
-        var shadowRoot = this.createShadowRoot();
+        var shadowRoot
+        if(this.attachShadow){
+            shadowRoot = this.attachShadow({mode:'open'});
+        } else {
+            shadowRoot = this.createShadowRoot();
+        }
         // Adds a template clone into shadow root
         var clone = thatDoc.importNode(template, true);
         this.container = clone.getElementById("juicy-ace-editor-container");
