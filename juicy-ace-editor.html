@@ -1,7 +1,7 @@
 <!--
     Custom Element with Ace code editor
     http://juicy.github.io/juicy-ace-editor/
-    version: 1.2.3
+    version: 1.2.4
     @demo index.html
     @license MIT
     @author
@@ -45,28 +45,28 @@
             // Polyfill ceveat we need to fetch the right context;
             // https://github.com/WebReflection/document-register-element/tree/master#v1-caveat
             self = super(self);
-        var value = "";
-        Object.defineProperty(this, "value", {
-            set: function(val){
-                    self.editor && self.editor.setValue( val );
-                value = val;
-            },
-            get: function(){
-                    value = self.editor && self.editor.getValue() || value;
-                return value;
+            var value = "";
+            Object.defineProperty(this, "value", {
+                set: function(val){
+                        self.editor && self.editor.setValue( val );
+                    value = val;
+                },
+                get: function(){
+                        value = self.editor && self.editor.getValue() || value;
+                    return value;
+                }
+            });
+            // Creates the shadow root
+            var shadowRoot
+            if(self.attachShadow && self.getRootNode){
+                shadowRoot = self.attachShadow({mode:'open'});
+            } else {
+                shadowRoot = self.createShadowRoot();
             }
-        });
-        // Creates the shadow root
-        var shadowRoot
-        if(this.attachShadow){
-            shadowRoot = self.attachShadow({mode:'open'});
-        } else {
-            shadowRoot = self.createShadowRoot();
-        }
-        // Adds a template clone into shadow root
-        var clone = thatDoc.importNode(template, true);
+            // Adds a template clone into shadow root
+            var clone = thatDoc.importNode(template, true);
             self.container = clone.getElementById("juicy-ace-editor-container");
-        shadowRoot.appendChild(clone);
+            shadowRoot.appendChild(clone);
             return self;
         }
     };
