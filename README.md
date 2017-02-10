@@ -18,6 +18,8 @@ Besides Ace features, `<juicy-ace-editor>` does:
  - observe DOM changes:
   - Update your code by just updating Element's text content
   - Change Editor's setting by changing DOM [attributes](#attributes)
+ - Compatible with Shadow DOM v0 and v1
+ - Custom Elements v1 version at [CE-v1 branch](https://github.com/Juicy/juicy-ace-editor/tree/CE-v1)
 
 You can still fiddle with Ace editor programmatically using `<juicy-ace-editor>.editor`.
 
