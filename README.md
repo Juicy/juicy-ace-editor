@@ -19,7 +19,7 @@ Besides Ace features, `<juicy-ace-editor>` does:
   - Update your code by just updating Element's text content
   - Change Editor's setting by changing DOM [attributes](#attributes)
  - Compatible with Shadow DOM v0 and v1
- - Custom Elements v1 version at [CE-v1 branch](https://github.com/Juicy/juicy-ace-editor/tree/CE-v1)
+ - Custom Elements v1 ([more](#web-components-v0-vs-v1))
 
 You can still fiddle with Ace editor programmatically using `<juicy-ace-editor>.editor`.
 
@@ -38,7 +38,9 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zi
 1. Import Web Components' polyfill (if needed):
 
     ```html
-    <script src="//cdn.jsdelivr.net/webcomponentsjs/0.6.0/webcomponents.min.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <!-- CE v0 -> v1 -->
+    <script src="document-register-element/document-register-element.js"></script>
     ```
 
 2. Import Custom Element:
@@ -91,13 +93,20 @@ Name           |  Description
 `change`       | Triggered when editor content gets changed
 `editor-ready` | Triggered once Ace editor instance is created.
 
+## Web Components v0 vs v1
+
+Currently, this element supports both Shadow DOM v1 and v0, but only Custom Elements v1.
+If your environment uses Custom Elements v0 only, we strongly recommend to use lightweight v0 to v1 [polyfill](https://github.com/WebReflection/document-register-element)
+```sh
+bower install --save document-register-element
+```
+
 ## Who uses it?
 
 - [**Starcounter** In-memory application engine](http://starcounter.com/)
 - [**LEAN** Theorem prover by Microsoft Research](https://leanprover.github.io/)
 - [**Polymer/polyup** Polymer migration tool](http://polymerlabs.github.io/polyup/)
-- [**You** ...?](https://github.com/Juicy/juicy-ace-editor/edit/master/README.md#L81)
-
+- [**You** ...?](https://github.com/Juicy/juicy-ace-editor/edit/master/README.md#L107)
 
 
 ## [Contributing and Development](CONTRIBUTING.md)
