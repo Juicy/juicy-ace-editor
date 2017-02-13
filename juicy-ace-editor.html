@@ -42,10 +42,14 @@
     class TomalecAceEditor extends HTMLElement {
         // getter/setter for value property
         get value(){
-            return self.editor && self.editor.getValue() || "";
+            return this.editor && this.editor.getValue() || this.textContent;
         }
         set value(val){
-            self.editor && self.editor.setValue( val );
+            if(this.editor){
+                this.editor.setValue( val );
+            } else {
+                this.textContent = val;
+            }
         }
         // list of observable attributes
         static get observedAttributes() {
@@ -62,7 +66,7 @@
             if(self.attachShadow && self.getRootNode){
                 shadowRoot = self.attachShadow({mode:'open'});
             } else {
-                    shadowRoot = self.createShadowRoot();
+                shadowRoot = self.createShadowRoot();
             }
             // Adds a template clone into shadow root
             var clone = thatDoc.importNode(template, true);
@@ -78,10 +82,9 @@
 
             if(this.editor){
                 editor = this.editor;
-                this.value = text.textContent || this.value;
             } else {
                 // container.appendChild(text);
-                container.innerHTML = this.innerHTML || this.value;
+                container.textContent = this.value;
                 editor = ace.edit(container);
                 this.dispatchEvent(new CustomEvent("editor-ready", {detail: editor}));
                 this.editor = editor;
