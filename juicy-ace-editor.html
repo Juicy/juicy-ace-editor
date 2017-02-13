@@ -42,14 +42,19 @@
     if(window.customElements){
     // Creates an object based in the HTML Element prototype
         TomalecAceEditor = class TomalecAceEditor extends HTMLElement {
-        // Fires when an instance of the element is created
-        constructor(self){
-            // Polyfill ceveat we need to fetch the right context;
-            // https://github.com/WebReflection/document-register-element/tree/master#v1-caveat
-            self = super(self);
+            // Fires when an instance of the element is created
+            constructor(self){
+                // Polyfill ceveat we need to fetch the right context;
+                // https://github.com/WebReflection/document-register-element/tree/master#v1-caveat
+                self = super(self);
                 // Use createdCallback from v0
                 createdCallback.call(self);
                 return self;
+            }
+            // Only part element-specific
+            // List of observable attributes
+            static get observedAttributes() {
+                return ['theme', 'mode', 'fontsize', 'softtabs', 'tabsize', 'readonly', 'wrapmode'];
             }
         };
         TomalecAceEditorPrototype = TomalecAceEditor.prototype;
