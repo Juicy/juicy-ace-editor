@@ -48,17 +48,20 @@
             // https://github.com/WebReflection/document-register-element/tree/master#v1-caveat
             self = super(self);
                 // Use createdCallback from v0
-                TomalecAceEditorPrototype.createdCallback.call(self);
+                createdCallback.call(self);
                 return self;
             }
         };
         TomalecAceEditorPrototype = TomalecAceEditor.prototype;
     } else {
         TomalecAceEditorPrototype = Object.create(HTMLElement.prototype);
+        TomalecAceEditorPrototype.createdCallback = createdCallback;
     }
 
     // Fires when an instance of the element is created
-    TomalecAceEditorPrototype.createdCallback = function() {
+    // #createdCallback collides with docuemnt-register-element v1 polyfill
+    // TomalecAceEditorPrototype.createdCallback = function() {
+    function createdCallback(){
         var value = "";
         Object.defineProperty(this, "value", {
             set: function(val){
@@ -87,6 +90,7 @@
     // Fires when an instance was inserted into the document
     TomalecAceEditorPrototype.attachedCallback =
     TomalecAceEditorPrototype.connectedCallback = function() {
+        debugger
         var text = this.childNodes[0];
         var container = this.container;
         var element = this;
@@ -205,10 +209,8 @@
 
     // If CEv1
     if(window.customElements){
-        console.log('cev1')
         window.customElements.define('juicy-ace-editor', TomalecAceEditor);
     } else {
-        console.log('cev0')
         document.registerElement('juicy-ace-editor', {
             prototype: TomalecAceEditorPrototype
         });
