@@ -71,7 +71,8 @@
             }
             // Adds a template clone into shadow root
             var clone = thatDoc.importNode(template, true);
-            self.container = clone.getElementById("juicy-ace-editor-container");
+            // getElementById may not be polyfilled yet
+            self.container = clone.querySelector('#juicy-ace-editor-container');
             shadowRoot.appendChild(clone);
             return self;
         }
