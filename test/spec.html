@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <!-- v0 with Shadow DOM-->
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <!-- or v1 -->
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../document-register-element/build/document-register-element.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../juicy-ace-editor.html">
+</head>
+
+<body>
+    <test-fixture id="element">
+        <template><juicy-ace-editor></juicy-ace-editor></template>
+    </test-fixture>
+</body>
+<script>
+    var juicyElement;
+    describe('juicy-ace-editor', function() {
+
+        beforeEach(function() {
+            juicyElement = fixture('element');
+        });
+
+        it('should be upgraded element', function() {
+            expect(juicyElement).to.be.an.instanceOf(HTMLElement);
+            expect(juicyElement).to.be.not.an.instanceOf(HTMLUnknownElement);
+        });
+    });
+</script>
+
+</html>
