@@ -78,6 +78,7 @@ Attribute  | Options   | Default | Description
 `tabsize`  | *Boolean* |         | `Session#setTabSize()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
 `readonly` | *Boolean* |         | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
 `wrapmode` | *Boolean* |         | `Session#setWrapMode()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`shadow-style` | *String* |     | CSS selector for a `<style>` element to be injected to Shadow DOM when stamped or attributeChanged
 
 ## Properties
 
