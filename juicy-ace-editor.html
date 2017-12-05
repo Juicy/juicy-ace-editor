@@ -177,8 +177,12 @@
             this.container.offsetHeight;
             this.container.style.display='';
         }
-        injectTheme(themeId){
-            var n = document.querySelector(themeId);
+        /**
+         * Injects a style element into juicy-ace-editor's shadow root
+         * @param {CSSSelector} selector for an element in the same shadow tree or document as `juicy-ace-editor`
+         */
+        injectTheme(selector){
+            var n = this.getRootNode().querySelector(selector);
             this.shadowRoot.appendChild(cloneStyle(n));
         }
     };
