@@ -1,13 +1,13 @@
 {
   "name": "juicy-ace-editor",
   "description": "Custom Element wrapper for Ace code editor",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "author": "Juicy",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Juicy/juicy-ace-editor/issues"
   },
-  "homepage": "https://github.com/Juicy/juicy-ace-editor#readme",  
+  "homepage": "https://github.com/Juicy/juicy-ace-editor#readme",
   "scripts": {
     "test": "wct"
   },
