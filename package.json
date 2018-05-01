@@ -10,7 +10,7 @@
   "homepage": "https://github.com/Juicy/juicy-ace-editor#readme",
   "main": "./juicy-ace-editor.js",
   "scripts": {
-    "test": "wct"
+    "test": "wct --npm --module-resolution=node"
   },
   "directories": {
     "test": "test"
