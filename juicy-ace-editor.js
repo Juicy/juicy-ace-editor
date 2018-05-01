@@ -1,5 +1,5 @@
 import 'ace-builds/src-noconflict/ace.js';
-import 'ace-builds/src-noconflict/ext-searchbox.js'
+import 'ace-builds/src-noconflict/ext-searchbox.js';
 
 // Creates an object based in the HTML Element prototype
 class TomalecAceEditor extends HTMLElement {
@@ -9,7 +9,7 @@ class TomalecAceEditor extends HTMLElement {
     }
     set value(val){
         if(this.editor){
-            this.editor.setValue( val );
+            this.editor.setValue(val, 1);
         } else {
             this.textContent = val;
         }
