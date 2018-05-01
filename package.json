@@ -26,6 +26,7 @@
     "grunt-contrib-watch": "~0.6.1"
   },
   "dependencies": {
-    "ace-builds": "^1.2.9"
+    "ace-builds": "^1.2.9",
+    "web-component-tester": "^6.6.0-pre.5"
   }
 }
