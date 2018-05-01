@@ -8,6 +8,7 @@
     "url": "https://github.com/Juicy/juicy-ace-editor/issues"
   },
   "homepage": "https://github.com/Juicy/juicy-ace-editor#readme",
+  "main": "./juicy-ace-editor.js",
   "scripts": {
     "test": "wct"
   },
