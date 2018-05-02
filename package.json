@@ -25,6 +25,7 @@
     "grunt-cli": "~0.1.9",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-watch": "~0.6.1",
+    "wct-browser-legacy": "0.0.1-pre.12",
     "web-component-tester": "^6.6.0-pre.5"
   },
   "dependencies": {
