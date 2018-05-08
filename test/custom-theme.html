@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../juicy-ace-editor.html">
+</head>
+
+<body>
+    <test-fixture id="aceTheme">
+        <template><juicy-ace-editor
+	           theme="ace/theme/dawn"></juicy-ace-editor></template>
+    </test-fixture>
+</body>
+<script>
+    var juicyElement;
+    describe('with `theme` attribute set to `ace/theme/dawn`', function() {
+
+        beforeEach(function(done) {
+            juicyElement = fixture('aceTheme');
+            // wait for theme loaded
+            setTimeout(done, 200);
+        });
+
+        it('should stamp it to its shadowRoot', function() {
+            expect(juicyElement.shadowRoot.querySelector('style#ace-dawn')).to.be.not.null;
+        });
+    });
+</script>
+
+</html>

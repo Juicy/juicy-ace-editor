@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../juicy-ace-editor.html">
+</head>
+
+<body>
+    <test-fixture id="hadmadeStyle">
+        <template><style id="my-theme-id">
+            #juicy-ace-editor-container{
+                font-size: 40px;
+            }
+            .ace-tm div.ace_gutter {
+                font-size: 7px;
+            }
+            </style><juicy-ace-editor
+	           shadow-style="#my-theme-id"></juicy-ace-editor></template>
+    </test-fixture>
+</body>
+<script>
+    var juicyElement;
+    describe('with `shadow-style` attribute set to CSS selector for a custom style element', function() {
+
+        beforeEach(function(done) {
+            juicyElement = fixture('hadmadeStyle')[1];
+            // wait for theme loaded
+            setTimeout(done, 100);
+        });
+
+        it('should stamp it to its shadowRoot and apply styles', function() {
+            expect(juicyElement.shadowRoot.querySelector('style#my-theme-id')).to.be.not.null;
+            expect(window.getComputedStyle(juicyElement.shadowRoot.querySelector('.ace_gutter')).fontSize).to.be.equal('7px');
+        });
+    });
+</script>
+
+</html>
