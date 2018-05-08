@@ -40,7 +40,7 @@
     }
 
     // Creates an object based in the HTML Element prototype
-    class TomalecAceEditor extends HTMLElement {
+    window.customElements.define('juicy-ace-editor', class JuicyAceEditor extends HTMLElement {
         // getter/setter for value property
         get value(){
             return this.editor && this.editor.getValue() || this.textContent;
@@ -193,11 +193,10 @@
          * @param {CSSSelector} selector for an element in the same shadow tree or document as `juicy-ace-editor`
          */
         injectTheme(selector){
-            const lightStyle = this.getRootNode().querySelector(selector);
+            const lightStyle = this.getRootNode().querySelector(selector) || document.querySelector(selector);
             this.shadowRoot.appendChild(lightStyle.cloneNode(true));
         }
-    };
+    });
 
-    window.customElements.define('juicy-ace-editor', TomalecAceEditor);
 }(window, document));
 </script>
