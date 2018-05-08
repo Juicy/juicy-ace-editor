@@ -6,8 +6,8 @@
     @license MIT
     @author
 -->
-<script src="../ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<script src="../ace-builds/src-min-noconflict/ext-searchbox.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ace-builds/src-noconflict/ext-searchbox.js" type="text/javascript" charset="utf-8"></script>
 
 <template id="juicy-ace-editor">
     <style>
@@ -54,7 +54,7 @@
         }
         // list of observable attributes
         static get observedAttributes() {
-            return ['theme', 'mode', 'fontsize', 'softtabs', 'tabsize', 'readonly', 'wrapmode'];
+            return ['theme', 'mode', 'fontsize', 'softtabs', 'tabsize', 'readonly', 'wrapmode', 'shadow-style'];
         }
 
         // Fires when an instance of the element is created
@@ -113,6 +113,8 @@
                 session.setUseSoftTabs( this.getAttribute("softtabs") );
                 this.getAttribute("tabsize") && session.setTabSize( this.getAttribute("tabsize") );
                 session.setUseWrapMode( this.hasAttribute("wrapmode") );
+                // non ace specific
+                this.hasAttribute("shadow-style") && this.injectTheme(this.getAttribute('shadow-style'));
 
 
             // Observe input textNode changes
@@ -158,6 +160,12 @@
                 case "wrapmode":
                     this.editor.getSession().setUseWrapMode( newVal !== null );
                     break;
+                // non-Ace specific
+                case 'shadow-style':
+                    if(oldVal){
+                        this.shadowRoot.querySelector(oldVal).remove();
+                    }
+                    this.injectTheme(newVal);
 
             }
         }
@@ -169,19 +177,15 @@
             this.container.offsetHeight;
             this.container.style.display='';
         }
-        injectTheme(themeId){
-            var n = document.querySelector(themeId);
-            this.shadowRoot.appendChild(cloneStyle(n));
+        /**
+         * Injects a style element into juicy-ace-editor's shadow root
+         * @param {CSSSelector} selector for an element in the same shadow tree or document as `juicy-ace-editor`
+         */
+        injectTheme(selector){
+            const lightStyle = this.getRootNode().querySelector(selector);
+            this.shadowRoot.appendChild(lightStyle.cloneNode(true));
         }
     };
-
-    //helper function to clone a style
-    function cloneStyle(style) {
-        var s = document.createElement('style');
-        s.id = style.id;
-        s.textContent = style.textContent;
-        return s;
-    }
 
     window.customElements.define('juicy-ace-editor', TomalecAceEditor);
 }(window, document));
