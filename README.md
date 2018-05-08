@@ -38,9 +38,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zi
 1. Import Web Components' polyfill (if needed):
 
     ```html
-    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-    <!-- CE v0 -> v1 -->
-    <script src="document-register-element/document-register-element.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     ```
 
 2. Import Custom Element:
@@ -55,7 +53,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zi
    ```
    <custom-element-demo>
      <template>
-       <script src="../webcomponentsjs/webcomponents.js"></script>
+       <script src="../webcomponentsjs/webcomponents-lite.js"></script>
        <link rel="import" href="juicy-ace-editor.html">
        <next-code-block></next-code-block>
      </template>
