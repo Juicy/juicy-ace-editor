@@ -89,8 +89,8 @@
                 container.textContent = this.value;
                 const options = {};
                 // support autoresizing
-                this.hasAttribute('max-lines') && (options.maxLines = parseInt(this.getAttribute('max-lines'), 10));
-                this.hasAttribute('min-lines') && (options.minLines = parseInt(this.getAttribute('min-lines'), 10));
+                this.hasAttribute('max-lines') && (options.maxLines = Number(this.getAttribute('max-lines')));
+                this.hasAttribute('min-lines') && (options.minLines = Number(this.getAttribute('min-lines')));
 
                 editor = ace.edit(container, options);
                 this.dispatchEvent(new CustomEvent("editor-ready", {bubbles: true, composed: true, detail: editor}));
@@ -111,7 +111,7 @@
 
             // initial attributes
                 editor.setTheme( this.getAttribute("theme") );
-                editor.setFontSize( parseInt(this.getAttribute("fontsize")) || 12 );
+                editor.setFontSize( Number(this.getAttribute("fontsize")) || 12 );
                 editor.setReadOnly( this.hasAttribute("readonly") );
                 var session = editor.getSession();
                 session.setMode( this.getAttribute("mode") );
@@ -166,10 +166,10 @@
                     this.editor.getSession().setUseWrapMode( newVal !== null );
                     break;
                 case "max-lines":
-                    this.editor && (this.editor.renderer.$maxLines = parseInt(newVal, 10));
+                    this.editor && (this.editor.renderer.$maxLines = Number(newVal));
                     break;
                 case "min-lines":
-                    this.editor && (this.editor.renderer.$minLines = parseInt(newVal, 10));
+                    this.editor && (this.editor.renderer.$minLines = Number(newVal));
                     break;
                 // non-Ace specific
                 case 'shadow-style':

@@ -13,15 +13,15 @@
 
 <body>
     <test-fixture id="maxLines">
-        <template><juicy-ace-editor max-lines="5"></juicy-ace-editor></template>
+        <template><juicy-ace-editor max-lines="21"></juicy-ace-editor></template>
     </test-fixture>
     <test-fixture id="minLines">
-        <template><juicy-ace-editor min-lines="5"></juicy-ace-editor></template>
+        <template><juicy-ace-editor min-lines="21"></juicy-ace-editor></template>
     </test-fixture>
 </body>
 <script>
     var juicyElement;
-    describe('with `max-lines` attribute set to 5', function() {
+    describe('with `max-lines` attribute set to 21', function() {
 
         beforeEach(function(done) {
             aceEditSpy = sinon.spy(ace, 'edit');
@@ -33,9 +33,9 @@
             aceEditSpy.restore();
         });
 
-        it('should create ace, with `{maxLines: 5}` option', function() {
+        it('should create ace, with `{maxLines: 21}` option', function() {
             expect(aceEditSpy).to.be.called;
-            expect(aceEditSpy.args[0][1]).to.have.property('maxLines', 5);
+            expect(aceEditSpy.args[0][1]).to.have.property('maxLines', 21);
         });
 
         it('once changed to `"7"`, should update `.editor.renderer.$maxLine=7`', function() {
@@ -43,7 +43,7 @@
             expect(juicyElement.editor.renderer.$maxLines).to.equal(7);
         });
     });
-    describe('with `min-lines` attribute set to 5', function() {
+    describe('with `min-lines` attribute set to 21', function() {
 
         beforeEach(function(done) {
             aceEditSpy = sinon.spy(ace, 'edit');
@@ -55,9 +55,9 @@
             aceEditSpy.restore();
         });
 
-        it('should create ace, with `{minLines: 5}` option', function() {
+        it('should create ace, with `{minLines: 21}` option', function() {
             expect(aceEditSpy).to.be.called;
-            expect(aceEditSpy.args[0][1]).to.have.property('minLines', 5);
+            expect(aceEditSpy.args[0][1]).to.have.property('minLines', 21);
         });
 
         it('once changed to `"7"`, should update `.editor.renderer.$minLine=7`', function() {
