@@ -8,8 +8,9 @@
     "url": "https://github.com/Juicy/juicy-ace-editor/issues"
   },
   "homepage": "https://github.com/Juicy/juicy-ace-editor#readme",
+  "main": "./juicy-ace-editor-module.js",
   "scripts": {
-    "test": "wct"
+    "test": "wct --npm --module-resolution=node"
   },
   "directories": {
     "test": "test"
@@ -23,7 +24,9 @@
     "grunt-bump": "^0.3.0",
     "grunt-cli": "~0.1.9",
     "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "wct-browser-legacy": "0.0.1-pre.12",
+    "web-component-tester": "^6.6.0-pre.5"
   },
   "dependencies": {
     "ace-builds": "^1.2.9"
