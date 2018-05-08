@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../juicy-ace-editor.html">
+</head>
+
+<body>
+    <test-fixture id="maxLines">
+        <template><juicy-ace-editor max-lines="21"></juicy-ace-editor></template>
+    </test-fixture>
+    <test-fixture id="minLines">
+        <template><juicy-ace-editor min-lines="21"></juicy-ace-editor></template>
+    </test-fixture>
+</body>
+<script>
+    var juicyElement;
+    describe('with `max-lines` attribute set to 21', function() {
+
+        beforeEach(function(done) {
+            aceEditSpy = sinon.spy(ace, 'edit');
+            juicyElement = fixture('maxLines');
+            // wait for theme loaded
+            setTimeout(done, 100);
+        });
+        afterEach(()=>{
+            aceEditSpy.restore();
+        });
+
+        it('should create ace, with `{maxLines: 21}` option', function() {
+            expect(aceEditSpy).to.be.called;
+            expect(aceEditSpy.args[0][1]).to.have.property('maxLines', 21);
+        });
+
+        it('once changed to `"7"`, should update `.editor.renderer.$maxLine=7`', function() {
+            juicyElement.setAttribute('max-lines', "7");
+            expect(juicyElement.editor.renderer.$maxLines).to.equal(7);
+        });
+    });
+    describe('with `min-lines` attribute set to 21', function() {
+
+        beforeEach(function(done) {
+            aceEditSpy = sinon.spy(ace, 'edit');
+            juicyElement = fixture('minLines');
+            // wait for theme loaded
+            setTimeout(done, 100);
+        });
+        afterEach(()=>{
+            aceEditSpy.restore();
+        });
+
+        it('should create ace, with `{minLines: 21}` option', function() {
+            expect(aceEditSpy).to.be.called;
+            expect(aceEditSpy.args[0][1]).to.have.property('minLines', 21);
+        });
+
+        it('once changed to `"7"`, should update `.editor.renderer.$minLine=7`', function() {
+            juicyElement.setAttribute('min-lines', "7");
+            expect(juicyElement.editor.renderer.$minLines).to.equal(7);
+        });
+    });
+</script>
+
+</html>

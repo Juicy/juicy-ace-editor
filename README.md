@@ -67,15 +67,17 @@ Or [download as ZIP](https://github.com/juicy/juicy-ace-editor/archive/master.zi
 
 ## Attributes
 
-Attribute  | Options   | Default | Description
----        | ---       | ---     | ---
-`theme`    | *String*  |         | `Editor#setTheme` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`mode`     | *String*  |         | `EditSession#setMode` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`fontsize` | *String*  |         | `Editor#setFontSize` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`softtabs` | *Boolean* |         | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`tabsize`  | *Boolean* |         | `Session#setTabSize()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
-`readonly` | *Boolean* |         | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
-`wrapmode` | *Boolean* |         | `Session#setWrapMode()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+Attribute   | Options   | Default | Description
+---         | ---       | ---     | ---
+`theme`     | *String*  |         | `Editor#setTheme` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`mode`      | *String*  |         | `EditSession#setMode` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`fontsize`  | *String*  |         | `Editor#setFontSize` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`softtabs`  | *Boolean* |         | `EditSession#setUseSoftTabs()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`tabsize`   | *Boolean* |         | `Session#setTabSize()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`readonly`  | *Boolean* |         | `Editor#setReadOnly()` at [Ace API](http://ace.c9.io/#nav=api&api=editor)
+`wrapmode`  | *Boolean* |         | `Session#setWrapMode()` at [Ace API](http://ace.c9.io/#nav=api&api=edit_session)
+`max-lines` | *Number*  |         | `renderer#$maxLines` at used to for [autoresizing](https://ace.c9.io/demo/autoresize.html)
+`min-lines` | *Number*  |         | `renderer#$minLines` at used to for [autoresizing](https://ace.c9.io/demo/autoresize.html
 `shadow-style` | *String* |      | CSS selector for a `<style>` element, from the same (shadow)tree, to be injected to shadow root when stamped or attributeChanged
 
 ## Properties

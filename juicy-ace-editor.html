@@ -40,7 +40,7 @@
     }
 
     // Creates an object based in the HTML Element prototype
-    class TomalecAceEditor extends HTMLElement {
+    window.customElements.define('juicy-ace-editor', class JuicyAceEditor extends HTMLElement {
         // getter/setter for value property
         get value(){
             return this.editor && this.editor.getValue() || this.textContent;
@@ -54,7 +54,7 @@
         }
         // list of observable attributes
         static get observedAttributes() {
-            return ['theme', 'mode', 'fontsize', 'softtabs', 'tabsize', 'readonly', 'wrapmode', 'shadow-style'];
+            return ['theme', 'mode', 'fontsize', 'softtabs', 'tabsize', 'readonly', 'wrapmode', 'min-lines', 'max-lines', 'shadow-style'];
         }
 
         // Fires when an instance of the element is created
@@ -87,7 +87,12 @@
             } else {
                 // container.appendChild(text);
                 container.textContent = this.value;
-                editor = ace.edit(container);
+                const options = {};
+                // support autoresizing
+                this.hasAttribute('max-lines') && (options.maxLines = Number(this.getAttribute('max-lines')));
+                this.hasAttribute('min-lines') && (options.minLines = Number(this.getAttribute('min-lines')));
+
+                editor = ace.edit(container, options);
                 this.dispatchEvent(new CustomEvent("editor-ready", {bubbles: true, composed: true, detail: editor}));
                 this.editor = editor;
 
@@ -106,7 +111,7 @@
 
             // initial attributes
                 editor.setTheme( this.getAttribute("theme") );
-                editor.setFontSize( parseInt(this.getAttribute("fontsize")) || 12 );
+                editor.setFontSize( Number(this.getAttribute("fontsize")) || 12 );
                 editor.setReadOnly( this.hasAttribute("readonly") );
                 var session = editor.getSession();
                 session.setMode( this.getAttribute("mode") );
@@ -160,6 +165,12 @@
                 case "wrapmode":
                     this.editor.getSession().setUseWrapMode( newVal !== null );
                     break;
+                case "max-lines":
+                    this.editor && (this.editor.renderer.$maxLines = Number(newVal));
+                    break;
+                case "min-lines":
+                    this.editor && (this.editor.renderer.$minLines = Number(newVal));
+                    break;
                 // non-Ace specific
                 case 'shadow-style':
                     if(oldVal){
@@ -182,11 +193,10 @@
          * @param {CSSSelector} selector for an element in the same shadow tree or document as `juicy-ace-editor`
          */
         injectTheme(selector){
-            const lightStyle = this.getRootNode().querySelector(selector);
+            const lightStyle = this.getRootNode().querySelector(selector) || document.querySelector(selector);
             this.shadowRoot.appendChild(lightStyle.cloneNode(true));
         }
-    };
+    });
 
-    window.customElements.define('juicy-ace-editor', TomalecAceEditor);
 }(window, document));
 </script>
