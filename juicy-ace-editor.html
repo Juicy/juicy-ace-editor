@@ -54,7 +54,7 @@
         }
         // list of observable attributes
         static get observedAttributes() {
-            return ['theme', 'mode', 'fontsize', 'softtabs', 'tabsize', 'readonly', 'wrapmode', 'shadow-style'];
+            return ['theme', 'mode', 'fontsize', 'softtabs', 'tabsize', 'readonly', 'wrapmode', 'min-lines', 'max-lines', 'shadow-style'];
         }
 
         // Fires when an instance of the element is created
@@ -87,7 +87,12 @@
             } else {
                 // container.appendChild(text);
                 container.textContent = this.value;
-                editor = ace.edit(container);
+                const options = {};
+                // support autoresizing
+                this.hasAttribute('max-lines') && (options.maxLines = parseInt(this.getAttribute('max-lines'), 10));
+                this.hasAttribute('min-lines') && (options.minLines = parseInt(this.getAttribute('min-lines'), 10));
+
+                editor = ace.edit(container, options);
                 this.dispatchEvent(new CustomEvent("editor-ready", {bubbles: true, composed: true, detail: editor}));
                 this.editor = editor;
 
@@ -159,6 +164,12 @@
                     break;
                 case "wrapmode":
                     this.editor.getSession().setUseWrapMode( newVal !== null );
+                    break;
+                case "max-lines":
+                    this.editor && (this.editor.renderer.$maxLines = parseInt(newVal, 10));
+                    break;
+                case "min-lines":
+                    this.editor && (this.editor.renderer.$minLines = parseInt(newVal, 10));
                     break;
                 // non-Ace specific
                 case 'shadow-style':
