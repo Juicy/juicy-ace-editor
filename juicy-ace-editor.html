@@ -163,7 +163,7 @@
                 // non-Ace specific
                 case 'shadow-style':
                     if(oldVal){
-                        this.shadowRoot.querySelector('#'+oldVal).remove();
+                        this.shadowRoot.querySelector(oldVal).remove();
                     }
                     this.injectTheme(newVal);
 
@@ -182,18 +182,10 @@
          * @param {CSSSelector} selector for an element in the same shadow tree or document as `juicy-ace-editor`
          */
         injectTheme(selector){
-            var n = this.getRootNode().querySelector(selector);
-            this.shadowRoot.appendChild(cloneStyle(n));
+            const lightStyle = this.getRootNode().querySelector(selector);
+            this.shadowRoot.appendChild(lightStyle.cloneNode(true));
         }
     };
-
-    //helper function to clone a style
-    function cloneStyle(style) {
-        var s = document.createElement('style');
-        s.id = style.id;
-        s.textContent = style.textContent;
-        return s;
-    }
 
     window.customElements.define('juicy-ace-editor', TomalecAceEditor);
 }(window, document));
