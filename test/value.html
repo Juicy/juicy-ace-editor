@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../juicy-ace-editor.html">
+</head>
+
+<body>
+    <test-fixture id="element">
+        <template><juicy-ace-editor></juicy-ace-editor></template>
+    </test-fixture>
+</body>
+<script>
+    var juicyElement;
+    describe('value property', function() {
+
+        beforeEach(function() {
+            juicyElement = fixture('element');
+        });
+
+        it('should set the editor content', function() {
+            var content = "some content";
+            juicyElement.value = content;
+            expect(juicyElement.editor.getValue()).to.equal(content);
+        });
+    });
+</script>
+
+</html>

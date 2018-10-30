@@ -47,7 +47,9 @@
         }
         set value(val){
             if(this.editor){
+                this.ignoreChange = true;
                 this.editor.setValue( val );
+                this.ignoreChange = false;
             } else {
                 this.textContent = val;
             }
@@ -62,6 +64,7 @@
             // Polyfill ceveat we need to fetch the right context;
             // https://github.com/WebReflection/document-register-element/tree/master#v1-caveat
             self = super(self);
+            this.ignoreChange = false;
             // Creates the shadow root
             var shadowRoot;
             if(self.attachShadow && self.getRootNode){
@@ -101,8 +104,10 @@
                 this.injectTheme('#ace-tm');
                 this.injectTheme('#ace_searchbox');
 
-                editor.getSession().on('change', function(event){
-                    element.dispatchEvent(new CustomEvent("change", {bubbles: true, composed: true, detail: event}));
+                editor.getSession().on('change', (event) => {
+                    if (!this.ignoreChange) {
+                        element.dispatchEvent(new CustomEvent("change", {bubbles: true, composed: true, detail: event}));
+                    }
                 });
             }
 
