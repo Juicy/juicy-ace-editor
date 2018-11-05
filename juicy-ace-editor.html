@@ -1,13 +1,15 @@
 <!--
     Custom Element with Ace code editor
     http://juicy.github.io/juicy-ace-editor/
-    version: 2.1.0
+    version: 2.2.0
     @demo index.html
     @license MIT
     @author
 -->
 <script src="../ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="../ace-builds/src-noconflict/ext-searchbox.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ace-builds/src-noconflict/ext-beautify.js" type="text/javascript" charset="utf-8"></script>
+
 
 <template id="juicy-ace-editor">
     <style>
@@ -74,6 +76,7 @@
             // getElementById may not be polyfilled yet
             self.container = clone.querySelector('#juicy-ace-editor-container');
             shadowRoot.appendChild(clone);
+            
             return self;
         }
         connectedCallback() {
@@ -104,6 +107,8 @@
                 editor.getSession().on('change', function(event){
                     element.dispatchEvent(new CustomEvent("change", {bubbles: true, composed: true, detail: event}));
                 });
+
+                this._beautify =  ace.require("ace/ext/beautify");
             }
 
             // handle theme changes
@@ -135,6 +140,9 @@
             text && observer.observe(text, { characterData: true });
             // container.appendChild(text);
             this._attached = true;
+        }
+        beautify() {
+            this._beautify.beautify(this.editor.session);
         }
         disconnectedCallback() {
             this._attached = false;

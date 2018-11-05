@@ -1,7 +1,7 @@
 {
   "name": "juicy-ace-editor",
   "description": "Custom Element wrapper for Ace code editor",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Juicy",
   "license": "MIT",
   "bugs": {
