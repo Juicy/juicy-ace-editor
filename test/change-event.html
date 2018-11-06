@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../juicy-ace-editor.html">
+</head>
+
+<body>
+    <test-fixture id="element">
+        <template><juicy-ace-editor></juicy-ace-editor></template>
+    </test-fixture>
+</body>
+<script>
+    var juicyElement;
+    describe('change event', function() {
+
+        beforeEach(function() {
+            juicyElement = fixture('element');
+        });
+
+        it('should be triggered when the new value comes from ACE setValue method', function() {
+            var content = "some content";
+            var callb = sinon.spy();
+            juicyElement.addEventListener('change', callb);
+            juicyElement.editor.setValue(content);
+            expect(callb).to.be.called;
+        });
+
+        it('should not be triggered when the new value comes from the value setter', function() {
+            var content = "some content";
+            var callb = sinon.spy();
+            juicyElement.addEventListener('change', callb);
+            juicyElement.value = content;
+            expect(callb).to.not.be.called;
+        });
+    });
+</script>
+
+</html>
