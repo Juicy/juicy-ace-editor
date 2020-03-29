@@ -1,6 +1,6 @@
 language: node_js
 sudo: required
-dist: trusty
+dist: xenial
 before_script:
   - npm install web-component-tester
   - npm install bower
@@ -9,11 +9,7 @@ before_script:
 node_js: 8
 addons:
   firefox: latest
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+  chrome: stable
 script:
   - xvfb-run wct --skip-plugin sauce
   - "if [ \"${TRAVIS_PULL_REQUEST}\" = \"false\" ]; then wct --skip-plugin local --plugin sauce; fi"
